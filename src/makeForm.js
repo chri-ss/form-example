@@ -6,16 +6,21 @@ const makeForm = () => {
 
   fields.forEach((field) => {
     const fieldSet = document.createElement("fieldset");
-    fieldSet.classList.add(field);
+    fieldSet.setAttribute('data-field', field);
 
     const label = document.createElement("label");
     label.textContent = field;
 
     const input = document.createElement("input");
-    input.required = true;
+    input.classList.add(field);
+
+    const errorDiv = document.createElement("div");
+    errorDiv.textContent = "error";
+    errorDiv.classList.add("hidden");
 
     fieldSet.appendChild(label);
     fieldSet.appendChild(input);
+    fieldSet.appendChild(errorDiv);
     form.appendChild(fieldSet);
   });
   const submit = document.createElement("button");
@@ -23,6 +28,7 @@ const makeForm = () => {
   submit.type = "submit";
   form.appendChild(submit);
   content.appendChild(form);
+  form.noValidate = true;
 };
 
 export { makeForm };
