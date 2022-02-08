@@ -31,10 +31,16 @@ label {
 input {
   outline: none;
   box-shadow: none;
-  border-radius: 10px;
   font-size: 24px;
 }
 
 .hidden {
   display: none;
+}
+
+.error {
+  text-align: center;
+  background-color: rgb(241, 169, 156);
+  border: 1px solid rgb(228, 53, 53);
+  color: rgb(228, 53, 53);
 }

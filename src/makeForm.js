@@ -6,7 +6,7 @@ const makeForm = () => {
 
   fields.forEach((field) => {
     const fieldSet = document.createElement("fieldset");
-    fieldSet.setAttribute('data-field', field);
+    fieldSet.setAttribute("data-field", field);
 
     const label = document.createElement("label");
     label.textContent = field;
@@ -14,21 +14,21 @@ const makeForm = () => {
     const input = document.createElement("input");
     input.classList.add(field);
     input.required = true;
-    if(field === 'Email') {
-      input.type = 'email';
-    } else if (field === 'Country') {
-      input.pattern = '[a-zA-Z]*';
-    } else if(field === 'ZIP') {
-      input.pattern = '\d{5}';
-    } else if (field === 'Pass') {
-      input.pattern = '[a-zA-Z\d]*';
-    } else if(field === 'Confirm') {
-      input.pattern = '[a-zA-Z\d]*';
+    if (field === "Email") {
+      input.type = "email";
+    } else if (field === "Country") {
+      input.pattern = "[a-zA-Z]*";
+    } else if (field === "ZIP") {
+      input.pattern = "[0-9]{5}";
+    } else if (field === "Pass") {
+      input.pattern = "[a-zA-Z0-9_]*";
+    } else if (field === "Confirm") {
+      input.pattern = "[a-zA-Z0-9_]*";
     }
 
     const errorDiv = document.createElement("div");
     errorDiv.textContent = "error";
-    errorDiv.classList.add("hidden");
+    errorDiv.classList.add("hidden", "error");
 
     fieldSet.appendChild(label);
     fieldSet.appendChild(input);
