@@ -2,7 +2,7 @@ const content = document.querySelector("#content");
 const form = document.createElement("form");
 
 const makeForm = () => {
-  const fields = ["Email", "Country", "ZIP", "Password", "Confirm"];
+  const fields = ["Email", "Country", "ZIP", "Pass", "Confirm"];
 
   fields.forEach((field) => {
     const fieldSet = document.createElement("fieldset");
@@ -13,6 +13,18 @@ const makeForm = () => {
 
     const input = document.createElement("input");
     input.classList.add(field);
+    input.required = true;
+    if(field === 'Email') {
+      input.type = 'email';
+    } else if (field === 'Country') {
+      input.pattern = '[a-zA-Z]*';
+    } else if(field === 'ZIP') {
+      input.pattern = '\d{5}';
+    } else if (field === 'Pass') {
+      input.pattern = '[a-zA-Z\d]*';
+    } else if(field === 'Confirm') {
+      input.pattern = '[a-zA-Z\d]*';
+    }
 
     const errorDiv = document.createElement("div");
     errorDiv.textContent = "error";

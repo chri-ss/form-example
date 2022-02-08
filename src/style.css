@@ -21,7 +21,6 @@ fieldset {
   display: flex;
   flex-direction: column;
   border: none;
-  gap: 1rem;
 }
 
 label {
