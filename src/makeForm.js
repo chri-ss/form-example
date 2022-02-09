@@ -21,8 +21,10 @@ const makeForm = () => {
     } else if (field === "ZIP") {
       input.pattern = "[0-9]{5}";
     } else if (field === "Pass") {
+      input.type = 'password';
       input.pattern = "[a-zA-Z0-9_]*";
     } else if (field === "Confirm") {
+      input.type = 'password';
       input.pattern = "[a-zA-Z0-9_]*";
     }
 
