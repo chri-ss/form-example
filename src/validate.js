@@ -3,8 +3,7 @@ import { errorMessage } from "./errorMessage";
 const validate = (field) => {
   const errorDiv = field.nextSibling;
   const passInput = document.querySelector(".Pass");
-  if (
-    (field.value !== "" && !field.validity.valid) ||
+  if (!field.validity.valid ||
     (field.className === "Confirm" && field.value !== passInput.value)
   ) {
     errorDiv.textContent = errorMessage(field);
@@ -19,7 +18,7 @@ const validate = (field) => {
 const validationListener = () => {
   const form = document.querySelector("form");
   form.addEventListener("focusout", (e) => {
-    if (e.target.tagName === "INPUT") {
+    if (e.target.tagName === "INPUT" && e.target.value !== '') {
       validate(e.target);
     }
   });
@@ -30,8 +29,8 @@ const submitValidationListener = () => {
   form.addEventListener("submit", (e) => {
     const inputs = Array.from(document.querySelectorAll("input"));
     inputs.forEach((input) => {
-      validate(input);
       if (!input.validity.valid) {
+        validate(input);
         e.preventDefault();
       }
     });
