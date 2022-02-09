@@ -4,7 +4,7 @@ const validate = (field) => {
   const errorDiv = field.nextSibling;
   const passInput = document.querySelector(".Pass");
   if (
-    !field.validity.valid ||
+    (field.value !== "" && !field.validity.valid) ||
     (field.className === "Confirm" && field.value !== passInput.value)
   ) {
     errorDiv.textContent = errorMessage(field);
